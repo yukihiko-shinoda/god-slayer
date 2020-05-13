@@ -4,9 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-bumpversion = "*"
+bump2version = "*"
 coverage = "*"
 flake8 = "*"
+godslayer = {editable = true,path = "."}
 invoke = "*"
 isort = "*"
 mypy = "*"
@@ -17,6 +18,5 @@ pytest-resource-path = "*"
 radon = "*"
 tox = "*"
 wheel = "==0.34.2"
-godslayer = {editable = true,path = "."}
 
 [packages]
