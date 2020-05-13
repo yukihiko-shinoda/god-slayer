@@ -61,12 +61,10 @@ Ready to contribute? Here's how to set up `god-slayer` for local development.
     git clone git@github.com:your_name_here/god-slayer.git
     ```
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development:
+3. Install your local copy into a virtualenv. Assuming you have Pipenv installed, this is how you set up your fork for local development:
 
     ```console
-    mkvirtualenv god-slayer
-    cd god-slayer/
-    python setup.py develop
+    pipenv install --dev
     ```
 
 4. Create a branch for local development:
@@ -81,12 +79,10 @@ Ready to contribute? Here's how to set up `god-slayer` for local development.
    tests, including testing other Python versions with tox:
 
     ```console
-    flake8 godslayer tests
-    python setup.py test or pytest
+    pipenv run inv lint
+    pipenv run inv test
     tox
     ```
-
-   To get flake8 and tox, just pip install them into your virtualenv.
 
 6. Commit your changes and push your branch to GitHub:
 
@@ -105,25 +101,20 @@ Before you submit a pull request, check that it meets these guidelines:
 1. The pull request should include tests.
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
-3. The pull request should work for Python 3.5, 3.6, 3.7 and 3.8, and for PyPy. Check
-<!-- markdownlint-disable no-bare-urls -->
-   https://travis-ci.com/yukihiko-shinoda/god-slayer/pull_requests
-<!-- markdownlint-enable no-bare-urls -->
-   and make sure that the tests pass for all supported Python versions.
+   feature to the list in README.md.
 
 ## Tips
 
 To run a subset of tests:
 
 ```console
-pytest tests.test_godslayer
+pipenv run pytest tests/test_god_slayer_factory.py
 ```
 
 ## Deploying
 
 A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in HISTORY.rst).
+Make sure all your changes are committed.
 Then run:
 
 ```console
@@ -132,4 +123,4 @@ git push
 git push --tags
 ```
 
-Travis will then deploy to PyPI if tests pass.
+GitHub Actions will then deploy to PyPI.
