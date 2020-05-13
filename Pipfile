@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+bumpversion = "*"
+coverage = "*"
+flake8 = "*"
+invoke = "*"
+isort = "*"
+mypy = "*"
+pylint = "*"
+pipenv-setup = "*"
+pytest = "*"
+pytest-resource-path = "*"
+radon = "*"
+tox = "*"
+wheel = "==0.34.2"
+godslayer = {editable = true,path = "."}
+
+[packages]
