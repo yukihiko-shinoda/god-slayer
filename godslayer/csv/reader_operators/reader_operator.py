@@ -1,9 +1,12 @@
+"""Agrigate and state of reading CSV file."""
 from __future__ import annotations
 
 from typing import Generator, Iterator, List, Optional
 
 
 class ReaderOperator:
+    """Agrigate and state of reading CSV file."""
+
     def __init__(self, *, before_task: Optional[ReaderOperator] = None):
         self.before_task = before_task
         self._index: Optional[int] = None

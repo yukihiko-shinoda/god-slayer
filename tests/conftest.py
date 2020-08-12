@@ -1,6 +1,7 @@
+"""Configuration for pytest."""
 import pytest
 
-collect_ignore = ['setup.py']
+collect_ignore = ["setup.py"]
 
 
 @pytest.fixture

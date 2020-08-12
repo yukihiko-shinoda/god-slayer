@@ -1,8 +1,10 @@
-"""Tests for csv_with last_line_detector.py"""
+"""Tests for line_counter.py."""
 from godslayer.line_counter import LineCounter
 
 
 class TestLineCounter:
+    """Tests for LineCounter."""
+
     @staticmethod
     def test_gold_point_card_plus_201912(path_gold_point_card_plus_201912):
         assert LineCounter.count(path_gold_point_card_plus_201912, "shift_jis_2004") == 5

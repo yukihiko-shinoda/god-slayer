@@ -1,6 +1,7 @@
 """This module implements fixture of instance."""
 
 
+# Reason: This class is aggregation. pylint: disable=too-few-public-methods
 class InstanceResource:
     """This class implements fixture of instance."""
 

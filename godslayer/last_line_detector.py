@@ -1,4 +1,4 @@
-"""This module implements last line detector."""
+"""Last line detector."""
 import csv
 import re
 from pathlib import Path
@@ -11,6 +11,8 @@ from godslayer.list_string_matcher import ListStringMatcher
 
 
 class LastLineDetector:
+    """Last line detector."""
+
     @classmethod
     def detect_index(cls, path_to_file: Path, footer: List[str], encoding: str = "utf-8") -> int:
         index_from_last_line = cls._count_index_from_last_line(path_to_file, footer, encoding)

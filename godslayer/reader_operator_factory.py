@@ -1,3 +1,4 @@
+"""Factory for ReaderOperator."""
 from pathlib import Path
 from typing import List, Optional
 
@@ -13,6 +14,8 @@ from godslayer.last_line_detector import LastLineDetector
 
 
 class ReaderOperatorFactory:
+    """Factory for ReaderOperator."""
+
     def __init__(
         self,
         path_to_file: Path,
@@ -20,6 +23,7 @@ class ReaderOperatorFactory:
         header: Optional[List[str]] = None,
         partition: Optional[List[str]] = None,
         footer: Optional[List[str]] = None,
+        # pylint: disable=duplicate-code
         encoding: str = "utf-8"
     ):
         self.path_to_file = path_to_file
@@ -29,6 +33,7 @@ class ReaderOperatorFactory:
         self.encoding = encoding
 
     def create(self) -> ReaderOperator:
+        """Creates ReaderOperator."""
         header_skipper: Optional[HeaderSkipper] = None if self.header is None else HeaderSkipper(self.header)
         if self.footer is not None:
             index_last_line = LastLineDetector.detect_index(self.path_to_file, self.footer, self.encoding)
@@ -40,11 +45,9 @@ class ReaderOperatorFactory:
     def _create_no_footer_record_reader(self, header_skipper: Optional[HeaderSkipper]):
         if self.partition is not None:
             return PartitionSkipRecordReader(self.partition, before_task=header_skipper)
-        else:
-            return RecordReader(before_task=header_skipper)
+        return RecordReader(before_task=header_skipper)
 
     def _create_record_before_footer_reader(self, index_last_line: int, header_skipper: Optional[HeaderSkipper]):
         if self.partition is not None:
             return PartitionSkipRecordBeforeFooterReader(self.partition, index_last_line, before_task=header_skipper)
-        else:
-            return RecordBeforeFooterReader(index_last_line, before_task=header_skipper)
+        return RecordBeforeFooterReader(index_last_line, before_task=header_skipper)

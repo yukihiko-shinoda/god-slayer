@@ -1,3 +1,4 @@
+"""Factory for GodSlayer."""
 from pathlib import Path
 from typing import List, Optional
 
@@ -6,6 +7,8 @@ from godslayer.reader_operator_factory import ReaderOperatorFactory
 
 
 class GodSlayerFactory:
+    """Factory for GodSlayer."""
+
     def __init__(
         self,
         *,

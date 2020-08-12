@@ -1,3 +1,4 @@
+"""Test for header_skipper.py."""
 import csv
 
 import pytest
@@ -8,6 +9,8 @@ from tests.testlibraries.instance_resource import InstanceResource
 
 
 class TestHeaderSkipper:
+    """Test for HeaderSkipper."""
+
     @staticmethod
     def test(path_gold_point_card_plus):
         with path_gold_point_card_plus.open("r", encoding="shift_jis_2004") as file_input:

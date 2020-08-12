@@ -1,9 +1,12 @@
+"""ReaderOperator to read record before footer."""
 from typing import Generator, Iterator, List, Optional
 
 from godslayer.csv.reader_operators.reader_operator import ReaderOperator
 
 
 class RecordBeforeFooterReader(ReaderOperator):
+    """ReaderOperator to read record before footer."""
+
     def __init__(self, index_footer_line: int, *, before_task: Optional[ReaderOperator] = None):
         super().__init__(before_task=before_task)
         self.index_footer_line = index_footer_line
