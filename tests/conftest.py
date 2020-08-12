@@ -1,5 +1,7 @@
 import pytest
 
+collect_ignore = ['setup.py']
+
 
 @pytest.fixture
 def path_gold_point_card_plus(resource_path_root):

@@ -3,23 +3,24 @@ Tasks for maintaining the project.
 
 Execute 'invoke --list' for guidance on using Invoke
 """
-import shutil
 import platform
-
-from invoke import task
-from pathlib import Path
+import shutil
 import webbrowser
+from pathlib import Path
 
+from invoke import task  # type: ignore
+from invoke.runners import Failure, Result  # type: ignore
 
 ROOT_DIR = Path(__file__).parent
 SETUP_FILE = ROOT_DIR.joinpath("setup.py")
 TEST_DIR = ROOT_DIR.joinpath("tests")
 SOURCE_DIR = ROOT_DIR.joinpath("godslayer")
-TOX_DIR = ROOT_DIR.joinpath(".tox")
+SETUP_PY = ROOT_DIR.joinpath("setup.py")
+TASKS_PY = ROOT_DIR.joinpath("tasks.py")
 COVERAGE_FILE = ROOT_DIR.joinpath(".coverage")
 COVERAGE_DIR = ROOT_DIR.joinpath("htmlcov")
 COVERAGE_REPORT = COVERAGE_DIR.joinpath("index.html")
-PYTHON_DIRS = [str(d) for d in [SOURCE_DIR, TEST_DIR]]
+PYTHON_DIRS = [str(d) for d in [SETUP_PY, TASKS_PY, SOURCE_DIR, TEST_DIR]]
 
 
 def _delete_file(file):
@@ -33,119 +34,171 @@ def _delete_file(file):
             pass
 
 
-@task(help={'check': "Checks if source is formatted without applying changes"})
-def format(c, check=False):
+@task(help={"check": "Checks if source is formatted without applying changes"})
+def style(context, check=False):
     """
     Format code
     """
-    python_dirs_string = " ".join(PYTHON_DIRS)
-    # Run isort
-    isort_options = '--recursive {}'.format(
-        '--check-only' if check else '')
-    c.run("isort {} {}".format(isort_options, python_dirs_string))
-    # Run black
-    black_options = '{}'.format('--check --diff' if check else '')
-    c.run("black {} {}".format(black_options, python_dirs_string))
+    for result in [
+        isort(context, check),
+        pipenv_setup(context, check),
+        black(context, check),
+    ]:
+        if result.failed:
+            raise Failure(result)
+
+
+def isort(context, check=False) -> Result:
+    """Runs isort."""
+    isort_options = "--recursive {}".format("--check-only --diff" if check else "")
+    return context.run("isort {} {}".format(isort_options, " ".join(PYTHON_DIRS)), warn=True)
+
+
+def pipenv_setup(context, check=False) -> Result:
+    """Runs pipenv-setup."""
+    isort_options = "{}".format("check --strict" if check else "sync --pipfile")
+    return context.run("pipenv-setup {}".format(isort_options), warn=True)
+
+
+def black(context, check=False) -> Result:
+    """Runs black."""
+    black_options = "{}".format("--check --diff" if check else "")
+    return context.run("black {} {}".format(black_options, " ".join(PYTHON_DIRS)), warn=True)
 
 
 @task
-def lint_flake8(c):
+def lint_flake8(context):
     """
     Lint code with flake8
     """
-    c.run("flake8 {}".format(" ".join(PYTHON_DIRS)))
+    context.run("flake8 {} {}".format("--radon-show-closures", " ".join(PYTHON_DIRS)))
 
 
 @task
-def lint_pylint(c):
+def lint_pylint(context):
     """
     Lint code with pylint
     """
-    c.run("pylint {}".format(" ".join(PYTHON_DIRS)))
+    context.run("pylint {}".format(" ".join(PYTHON_DIRS)))
 
 
-@task(lint_flake8, lint_pylint)
-def lint(c):
+@task
+def lint_mypy(context):
+    """
+    Lint code with pylint
+    """
+    context.run("mypy {}".format(" ".join(PYTHON_DIRS)))
+
+
+@task(lint_flake8, lint_pylint, lint_mypy)
+def lint(_context):
     """
     Run all linting
     """
 
 
 @task
-def test(c):
+def radon_cc(context):
+    """
+    Reports code complexity.
+    """
+    context.run("radon cc {}".format(" ".join(PYTHON_DIRS)))
+
+
+@task
+def radon_mi(context):
+    """
+    Reports maintainability index.
+    """
+    context.run("radon mi {}".format(" ".join(PYTHON_DIRS)))
+
+
+@task(radon_cc, radon_mi)
+def radon(_context):
+    """
+    Reports radon.
+    """
+
+
+@task
+def xenon(context):
+    """
+    Check code complexity.
+    """
+    context.run(("xenon" " --max-absolute A" "--max-modules A" "--max-average A" "{}").format(" ".join(PYTHON_DIRS)))
+
+
+@task
+def test(context):
     """
     Run tests
     """
-    pty = platform.system() == 'Linux'
-    c.run("python {} test".format(SETUP_FILE), pty=pty)
+    pty = platform.system() == "Linux"
+    context.run("python {} test".format(SETUP_FILE), pty=pty)
 
 
-@task(help={
-    'publish': "Publish the result via coveralls",
-    'xml': "Export report as xml format",
-})
-def coverage(c, publish=False, xml=False):
+@task(help={"publish": "Publish the result via coveralls", "xml": "Export report as xml format"})
+def coverage(context, publish=False, xml=False):
     """
     Create coverage report
     """
-    c.run("coverage run --source {} -m pytest".format(SOURCE_DIR))
-    c.run("coverage report")
+    context.run("coverage run --source {} -m pytest".format(SOURCE_DIR))
+    context.run("coverage report -m")
     if publish:
         # Publish the results via coveralls
-        c.run("coveralls")
+        context.run("coveralls")
         return
     # Build a local report
     if xml:
-        c.run("coverage xml")
+        context.run("coverage xml")
     else:
-        c.run("coverage html")
+        context.run("coverage html")
         webbrowser.open(COVERAGE_REPORT.as_uri())
 
 
 @task
-def clean_build(c):
+def clean_build(context):
     """
     Clean up files from package building
     """
-    c.run("rm -fr build/")
-    c.run("rm -fr dist/")
-    c.run("rm -fr .eggs/")
-    c.run("find . -name '*.egg-info' -exec rm -fr {} +")
-    c.run("find . -name '*.egg' -exec rm -f {} +")
+    context.run("rm -fr build/")
+    context.run("rm -fr dist/")
+    context.run("rm -fr .eggs/")
+    context.run("find . -name '*.egg-info' -exec rm -fr {} +")
+    context.run("find . -name '*.egg' -exec rm -f {} +")
 
 
 @task
-def clean_python(c):
+def clean_python(context):
     """
     Clean up python file artifacts
     """
-    c.run("find . -name '*.pyc' -exec rm -f {} +")
-    c.run("find . -name '*.pyo' -exec rm -f {} +")
-    c.run("find . -name '*~' -exec rm -f {} +")
-    c.run("find . -name '__pycache__' -exec rm -fr {} +")
+    context.run("find . -name '*.pyc' -exec rm -f {} +")
+    context.run("find . -name '*.pyo' -exec rm -f {} +")
+    context.run("find . -name '*~' -exec rm -f {} +")
+    context.run("find . -name '__pycache__' -exec rm -fr {} +")
 
 
 @task
-def clean_tests(c):
+def clean_tests(_context):
     """
     Clean up files from testing
     """
     _delete_file(COVERAGE_FILE)
-    shutil.rmtree(TOX_DIR, ignore_errors=True)
     shutil.rmtree(COVERAGE_DIR, ignore_errors=True)
 
 
 @task(pre=[clean_build, clean_python, clean_tests])
-def clean(c):
+def clean(_context):
     """
     Runs all clean sub-tasks
     """
-    pass
 
 
 @task(clean)
-def dist(c):
+def dist(context):
     """
     Build source and wheel packages
     """
-    c.run("python setup.py sdist bdist_wheel")
+    context.run("python setup.py sdist")
+    context.run("python setup.py bdist_wheel")
