@@ -1,12 +1,14 @@
+"""Tests for god_slayer_factory."""
 from godslayer.god_slayer_factory import GodSlayerFactory
 from tests.testlibraries.god_slayer_checker import GodSlayerChecker
 from tests.testlibraries.instance_resource import InstanceResource
 
 
 class TestClassGodSlayerFactory:
-    """Tests for God Slayer."""
+    """Tests for God Slayer Factory."""
 
-    def test_record_reader(self, path_gold_point_card_plus):
+    @staticmethod
+    def test_record_reader(path_gold_point_card_plus):
         """should"""
         expected = [
             ["2018/7/3", "東京電力  電気料金等", "ご本人", "1回払い", "", "18/8", "11402", "11402", "", "", "", "", ""],
@@ -15,7 +17,8 @@ class TestClassGodSlayerFactory:
         god_slayer = GodSlayerFactory(encoding="shift_jis_2004").create(path_gold_point_card_plus)
         GodSlayerChecker.assert_god_slayer(god_slayer, 0, expected)
 
-    def test_header_skipper(self, path_gold_point_card_plus_201912):
+    @staticmethod
+    def test_header_skipper(path_gold_point_card_plus_201912):
         """should"""
         expected = [
             ["2020/7/3", "東京電力  電気料金等", "11402", "1", "1", "11402", ""],
@@ -29,7 +32,8 @@ class TestClassGodSlayerFactory:
         ).create(path_gold_point_card_plus_201912)
         GodSlayerChecker.assert_god_slayer(god_slayer, 0, expected)
 
-    def test_header_skipper_multiple_line_header(self, path_sf_card_viewer):
+    @staticmethod
+    def test_header_skipper_multiple_line_header(path_sf_card_viewer):
         """should"""
         expected = [["2019/01/27", "", "", "", "", "", "", "195", "2896", "ﾊﾞｽ/路面等"]]
         god_slayer = GodSlayerFactory(header=InstanceResource.HEADER_SF_CARD_VIEWER, encoding="shift_jis_2004").create(
@@ -37,7 +41,8 @@ class TestClassGodSlayerFactory:
         )
         GodSlayerChecker.assert_god_slayer(god_slayer, 1, expected)
 
-    def test_partition_skip_record_reader(self, path_view_card):
+    @staticmethod
+    def test_partition_skip_record_reader(path_view_card):
         """should"""
         expected = [
             ["2020/03/21", "板橋駅　オートチャージ", "3,000", "", "3,000", "１回払", "", "3,000", "", "   ", ""],
@@ -50,7 +55,8 @@ class TestClassGodSlayerFactory:
         ).create(path_view_card)
         GodSlayerChecker.assert_god_slayer(god_slayer, 6, expected)
 
-    def test_partition_skip_record_before_footer_reader(self, path_itabashiku_population):
+    @staticmethod
+    def test_partition_skip_record_before_footer_reader(path_itabashiku_population):
         """should"""
         expected = [
             ["0", "4062", "2069", "1993"],

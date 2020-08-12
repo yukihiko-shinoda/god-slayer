@@ -16,7 +16,5 @@ pipenv-setup = "*"
 pytest = "*"
 pytest-resource-path = "*"
 radon = "*"
-tox = "*"
 wheel = "==0.34.2"
-
-[packages]
+xenon = "*"

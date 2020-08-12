@@ -75,14 +75,16 @@ Ready to contribute? Here's how to set up `god-slayer` for local development.
 
    Now you can make your changes locally.
 
-5. When you're done making changes, check that your changes pass flake8 and the
-   tests, including testing other Python versions with tox:
+5. When you're done making changes,
+   check that your changes pass isort, flake8, black,
+   and the tests, including testing oldest Python version:
 
-    ```console
-    pipenv run inv lint
-    pipenv run inv test
-    tox
-    ```
+   ```console
+   pipenv run inv style --check
+   pipenv run pytest
+   pipenv install --python 3.5
+   pipenv run pytest
+   ```
 
 6. Commit your changes and push your branch to GitHub:
 

@@ -1,3 +1,4 @@
+"""ReadOperator for skip header."""
 from typing import Generator, Iterator, List
 
 from godslayer.csv.reader_operators.reader_operator import ReaderOperator
@@ -6,6 +7,8 @@ from godslayer.list_string_matcher import ListStringMatcher
 
 
 class HeaderSkipper(ReaderOperator):
+    """ReadOperator for skip header."""
+
     def __init__(self, header: List[str]):
         super().__init__()
         self.header = header

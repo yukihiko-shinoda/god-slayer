@@ -11,6 +11,10 @@ class ListStringMatcher:
         """Returns whether all column is same or match with pattern or not."""
         if len(list_pattern) != len(list_column):
             return False
+        return ListStringMatcher._is_matched(list_pattern, list_column)
+
+    @staticmethod
+    def _is_matched(list_pattern: List[str], list_column: List[str]) -> bool:
         for pattern, column in zip(list_pattern, list_column):
             compiled_pattern = re.compile(pattern, re.UNICODE)
             if pattern != column and not compiled_pattern.search(column):
