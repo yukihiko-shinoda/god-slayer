@@ -1,6 +1,6 @@
 # ⛩️God Slayer⚔️
 
-[![See Build Status on Travis CI](https://travis-ci.org/yukihiko-shinoda/god-slayer.svg?branch=master)](https://travis-ci.org/yukihiko-shinoda/god-slayer)
+[![Test](https://github.com/yukihiko-shinoda/god-slayer/workflows/Test/badge.svg)](https://github.com/yukihiko-shinoda/god-slayer/actions?query=workflow%3ATest)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2d37a5447afd27d46af1/test_coverage)](https://codeclimate.com/github/yukihiko-shinoda/god-slayer/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2d37a5447afd27d46af1/maintainability)](https://codeclimate.com/github/yukihiko-shinoda/god-slayer/maintainability)
 [![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/yukihiko-shinoda/god-slayer)](https://codeclimate.com/github/yukihiko-shinoda/god-slayer)

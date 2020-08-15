@@ -7,18 +7,9 @@ from setuptools import find_packages, setup  # type: ignore
 with open("README.md", encoding="utf-8") as readme_file:
     readme = readme_file.read()
 
-setup_requirements = [
-    "pytest-runner",
-]
-
-test_requirements = [
-    "pytest>=3",
-]
-
 setup(
     author="Yukihiko Shinoda",
     author_email="yuk.hik.future@gmail.com",
-    python_requires=">=3.7",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
@@ -38,19 +29,20 @@ setup(
         "Topic :: Text Processing :: Indexing",
         "Typing :: Typed",
     ],
-    description="Provides generator to read Kami (god) CSV record as list of string.",
-    install_requires=[],
     dependency_links=[],
-    license="MIT license",
+    description="Provides generator to read Kami (god) CSV record as list of string.",
+    exclude_package_data={"": ["__pycache__", "*.py[co]", ".pytest_cache"]},
+    include_package_data=True,
+    install_requires=[],
+    keywords="God CSV Excel Microsoft 神CSV ネ申CSV 神エクセル ネ申エクセル マイクロソフト",
     long_description=readme,
     long_description_content_type="text/markdown",
-    include_package_data=True,
-    keywords="God CSV Excel Microsoft 神CSV ネ申CSV 神エクセル ネ申エクセル マイクロソフト",
     name="godslayer",
-    packages=find_packages(include=["godslayer", "godslayer.*"]),
-    setup_requires=setup_requirements,
+    packages=find_packages(include=["godslayer", "godslayer.*", "tests", "tests.*"]),
+    package_data={"godslayer": ["py.typed"], "tests": ["*"]},
+    python_requires=">=3.7",
     test_suite="tests",
-    tests_require=test_requirements,
+    tests_require=["pytest>=3"],
     url="https://github.com/yukihiko-shinoda/god-slayer",
     version="1.0.2",
     zip_safe=False,
