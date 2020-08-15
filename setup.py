@@ -7,14 +7,6 @@ from setuptools import find_packages, setup  # type: ignore
 with open("README.md", encoding="utf-8") as readme_file:
     readme = readme_file.read()
 
-setup_requirements = [
-    "pytest-runner",
-]
-
-test_requirements = [
-    "pytest>=3",
-]
-
 setup(
     author="Yukihiko Shinoda",
     author_email="yuk.hik.future@gmail.com",
@@ -48,9 +40,8 @@ setup(
     name="godslayer",
     packages=find_packages(include=["godslayer", "godslayer.*"]),
     python_requires=">=3.7",
-    setup_requires=setup_requirements,
     test_suite="tests",
-    tests_require=test_requirements,
+    tests_require=["pytest>=3"],
     url="https://github.com/yukihiko-shinoda/god-slayer",
     version="1.0.2",
     zip_safe=False,
