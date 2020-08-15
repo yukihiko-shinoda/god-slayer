@@ -1,9 +1,1 @@
-include LICENSE
-include README.md
-include godslayer/py.typed
-
-recursive-include tests *
-recursive-exclude * __pycache__
-recursive-exclude * *.py[co]
-
-recursive-include docs *.rst conf.py *.jpg *.png *.gif
+recursive-include docs *
