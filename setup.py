@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 """The setup script."""
 
 from setuptools import find_packages, setup  # type: ignore
@@ -14,6 +13,7 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",

@@ -5,6 +5,8 @@ from typing import List, Optional
 from godslayer.csv.god_slayer import GodSlayer
 from godslayer.reader_operator_factory import ReaderOperatorFactory
 
+__all__ = ["GodSlayerFactory"]
+
 
 class GodSlayerFactory:
     """Factory for GodSlayer."""

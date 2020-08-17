@@ -2,6 +2,8 @@
 import re
 from typing import List
 
+__all__ = ["ListStringMatcher"]
+
 
 class ListStringMatcher:
     """This class implements row pattern matcher."""

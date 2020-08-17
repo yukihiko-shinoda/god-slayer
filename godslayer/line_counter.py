@@ -2,6 +2,8 @@
 from mmap import mmap
 from pathlib import Path
 
+__all__ = ["LineCounter"]
+
 
 class LineCounter:
     """Line Counter."""

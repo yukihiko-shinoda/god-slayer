@@ -12,6 +12,8 @@ from godslayer.csv.reader_operators.record_before_footer_reader import RecordBef
 from godslayer.csv.reader_operators.record_reader import RecordReader
 from godslayer.last_line_detector import LastLineDetector
 
+__all__ = ["ReaderOperatorFactory"]
+
 
 class ReaderOperatorFactory:
     """Factory for ReaderOperator."""
