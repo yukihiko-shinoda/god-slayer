@@ -9,6 +9,8 @@ from godslayer.exceptions import InvalidFooterError
 from godslayer.line_counter import LineCounter
 from godslayer.list_string_matcher import ListStringMatcher
 
+__all__ = ["LastLineDetector"]
+
 
 class LastLineDetector:
     """Last line detector."""
