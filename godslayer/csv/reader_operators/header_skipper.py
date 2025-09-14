@@ -1,5 +1,8 @@
 """ReadOperator for skip header."""
-from typing import Generator, Iterator, List
+
+from typing import Generator
+from typing import Iterator
+from typing import List
 
 from godslayer.csv.reader_operators.reader_operator import ReaderOperator
 from godslayer.exceptions import InvalidHeaderError
@@ -19,5 +22,5 @@ class HeaderSkipper(ReaderOperator):
             if ListStringMatcher.is_matched(self.header, list_input_row_standard_type_value):
                 return
         raise InvalidHeaderError(
-            f"CSV file does not contain header row." "Confirm CSV file and header again. " f"Header = {self.header}"
+            f"CSV file does not contain header row.Confirm CSV file and header again. Header = {self.header}",
         )

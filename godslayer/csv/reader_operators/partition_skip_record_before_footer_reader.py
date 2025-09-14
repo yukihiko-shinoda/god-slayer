@@ -1,5 +1,9 @@
 """ReaderOperator to skip partition record until before footer."""
-from typing import Generator, Iterator, List, Optional
+
+from typing import Generator
+from typing import Iterator
+from typing import List
+from typing import Optional
 
 from godslayer.csv.reader_operators.reader_operator import ReaderOperator
 from godslayer.list_string_matcher import ListStringMatcher

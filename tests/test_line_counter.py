@@ -1,4 +1,5 @@
 """Tests for line_counter.py."""
+
 from godslayer.line_counter import LineCounter
 
 

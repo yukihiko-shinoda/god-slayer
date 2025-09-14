@@ -1,4 +1,5 @@
 """Top-level package for God Slayer."""
+
 from typing import List
 
 from godslayer.exceptions import *  # noqa

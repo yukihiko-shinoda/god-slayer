@@ -1,4 +1,5 @@
 """This module implements row pattern matcher."""
+
 import re
 from typing import List
 

@@ -1,8 +1,10 @@
 """Last line detector."""
+
 import csv
 import re
 from pathlib import Path
-from typing import Iterator, List
+from typing import Iterator
+from typing import List
 
 from godslayer.csv.reversed_csv_reader import ReversedCsvReader
 from godslayer.exceptions import InvalidFooterError
@@ -31,7 +33,5 @@ class LastLineDetector:
                 if ListStringMatcher.is_matched(footer, list_column):
                     return index + number_newline + 1
         raise InvalidFooterError(
-            f"{path_to_file.name} does not contain Footer row. "
-            "Confirm CSV file and footer again. "
-            f"Footer = {footer}"
+            f"{path_to_file.name} does not contain Footer row. Confirm CSV file and footer again. Footer = {footer}",
         )

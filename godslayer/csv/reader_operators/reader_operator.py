@@ -1,7 +1,11 @@
 """Agrigate and state of reading CSV file."""
+
 from __future__ import annotations
 
-from typing import Generator, Iterator, List, Optional
+from typing import Generator
+from typing import Iterator
+from typing import List
+from typing import Optional
 
 
 class ReaderOperator:
@@ -18,4 +22,6 @@ class ReaderOperator:
 
     @property
     def index(self) -> int:
-        return (0 if self._index is None else self._index) + (0 if self.before_task is None else self.before_task.index)
+        return (0 if self._index is None else self._index) + (
+            0 if self.before_task is None else self.before_task.index
+        )

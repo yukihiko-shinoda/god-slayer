@@ -1,5 +1,8 @@
 """ReaderOperator to read record."""
-from typing import Generator, Iterator, List
+
+from typing import Generator
+from typing import Iterator
+from typing import List
 
 from godslayer.csv.reader_operators.reader_operator import ReaderOperator
 

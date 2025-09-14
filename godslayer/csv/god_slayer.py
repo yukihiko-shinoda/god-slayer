@@ -1,7 +1,10 @@
 """This module implements analyzing process of CSV."""
+
 import csv
 from pathlib import Path
-from typing import Generator, List, Optional
+from typing import Generator
+from typing import List
+from typing import Optional
 
 from godslayer.csv.reader_operators.reader_operator import ReaderOperator
 from godslayer.exceptions import LogicError
@@ -20,9 +23,11 @@ class GodSlayer:
     def __iter__(self) -> Generator[List[str], None, None]:
         # noinspection LongLine
         # pylint:disable=line-too-long
-        """
-        This method convert this csv into Zaim format CSV.
-        @see https://stackoverflow.com/questions/14797930/python-custom-iterator-close-a-file-on-stopiteration/14798115#14798115 # noqa
+        """This method convert this csv into Zaim format CSV.
+
+        @see
+        https://stackoverflow.com/questions/14797930/python-custom-iterator-close-a-file-on-stopiteration/14798115#14798115
+        # noqa
         """
         self.reader_operator = self.reader_operator_factory.create()
         with self.path_to_file.open("r", encoding=self.encoding) as file_input:

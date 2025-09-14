@@ -1,6 +1,8 @@
 """Factory for ReaderOperator."""
+
 from pathlib import Path
-from typing import List, Optional
+from typing import List
+from typing import Optional
 
 from godslayer.csv.reader_operators.header_skipper import HeaderSkipper
 from godslayer.csv.reader_operators.partition_skip_record_before_footer_reader import (
@@ -26,7 +28,7 @@ class ReaderOperatorFactory:
         partition: Optional[List[str]] = None,
         footer: Optional[List[str]] = None,
         # pylint: disable=duplicate-code
-        encoding: str = "utf-8"
+        encoding: str = "utf-8",
     ):
         self.path_to_file = path_to_file
         self.header = header

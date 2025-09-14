@@ -1,6 +1,9 @@
 """Test library for check GodSlayer."""
+
 from dataclasses import dataclass
-from typing import Iterator, List, Optional
+from typing import Iterator
+from typing import List
+from typing import Optional
 
 import pytest
 
@@ -20,7 +23,7 @@ class GodSlayerChecker:
 
     @staticmethod
     def assert_god_slayer(god_slayer: GodSlayer, expected_index_start: int, expected: List[List[str]]):
-        """checks GodSlayer."""
+        """Checks GodSlayer."""
         god_slayer_check_state = GodSlayerCheckState(god_slayer.__iter__())
         # Order of argument for zip() is important.
         # First argument should be "expected"
@@ -41,7 +44,9 @@ class GodSlayerChecker:
 
     @staticmethod
     def _assert_god_slayer_partition(
-        expected: List[List[str]], god_slayer: GodSlayer, god_slayer_check_state: GodSlayerCheckState
+        expected: List[List[str]],
+        god_slayer: GodSlayer,
+        god_slayer_check_state: GodSlayerCheckState,
     ):
         for expected_record, actual in zip(expected, god_slayer_check_state.iterator_actual):
             if (

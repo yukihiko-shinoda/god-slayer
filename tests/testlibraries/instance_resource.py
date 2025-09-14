@@ -5,9 +5,24 @@
 class InstanceResource:
     """This class implements fixture of instance."""
 
-    REGEX_HEADER_GOLD_POINT_CARD_PLUS = [r".*　様", r"[0-9\*]{4}-[0-9\*]{4}-[0-9\*]{4}-[0-9\*]{4}", "ゴールドポイントカードプラス"]
+    REGEX_HEADER_GOLD_POINT_CARD_PLUS = [
+        r".*　様",
+        r"[0-9\*]{4}-[0-9\*]{4}-[0-9\*]{4}-[0-9\*]{4}",
+        "ゴールドポイントカードプラス",
+    ]
     REGEX_FOOTER_GOLD_POINT_CARD_PLUS = ["^$", "^$", "^$", "^$", "^$", r"^\d*$", "^$"]
-    HEADER_SF_CARD_VIEWER = ["利用年月日", "定期", "鉄道会社名", "入場駅/事業者名", "定期", "鉄道会社名", "出場駅/降車場所", "利用額(円)", "残額(円)", "メモ"]
+    HEADER_SF_CARD_VIEWER = [
+        "利用年月日",
+        "定期",
+        "鉄道会社名",
+        "入場駅/事業者名",
+        "定期",
+        "鉄道会社名",
+        "出場駅/降車場所",
+        "利用額(円)",
+        "残額(円)",
+        "メモ",
+    ]
     HEADER_VIEW_CARD = [
         "ご利用年月日",
         "ご利用箇所",
