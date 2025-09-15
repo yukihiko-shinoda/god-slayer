@@ -4,8 +4,12 @@ however, it doesn't support shift_jis_2004.
 @see https://pypi.org/project/file-read-backwards/
 """
 
+from __future__ import annotations
+
 import os
 from dataclasses import dataclass
+from typing import Generator
+from typing import TextIO
 
 
 @dataclass
@@ -18,7 +22,7 @@ class ReversedCsvReader:
     """This class implements Reversed CSV Reader."""
 
     @classmethod
-    def reversed_lines(cls, file):
+    def reversed_lines(cls, file: TextIO) -> Generator[str, None, None]:
         """Generate the lines of file in reverse order."""
         scan_state = ScanState()
         for block in cls.reversed_blocks(file):
@@ -28,7 +32,7 @@ class ReversedCsvReader:
             yield scan_state.part[::-1]
 
     @staticmethod
-    def _reversed_lines(scan_state, character):
+    def _reversed_lines(scan_state: ScanState, character: str) -> Generator[str, None, None]:
         if character == '"':
             scan_state.quoting = not scan_state.quoting
         elif character == "\n" and scan_state.part and not scan_state.quoting:
@@ -37,7 +41,7 @@ class ReversedCsvReader:
         scan_state.part += character
 
     @staticmethod
-    def reversed_blocks(file, blocksize=4096):
+    def reversed_blocks(file: TextIO, blocksize: int = 4096) -> Generator[str, None, None]:
         """Generate blocks of file's contents in reverse order."""
         file.seek(0, os.SEEK_END)
         here = file.tell()

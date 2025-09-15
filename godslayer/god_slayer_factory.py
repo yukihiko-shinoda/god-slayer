@@ -1,11 +1,14 @@
 """Factory for GodSlayer."""
 
-from pathlib import Path
-from typing import List
-from typing import Optional
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from godslayer.csv.god_slayer import GodSlayer
 from godslayer.reader_operator_factory import ReaderOperatorFactory
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 __all__ = ["GodSlayerFactory"]
 
@@ -16,11 +19,11 @@ class GodSlayerFactory:
     def __init__(
         self,
         *,
-        header: Optional[List[str]] = None,
-        partition: Optional[List[str]] = None,
-        footer: Optional[List[str]] = None,
+        header: list[str] | None = None,
+        partition: list[str] | None = None,
+        footer: list[str] | None = None,
         encoding: str = "utf-8",
-    ):
+    ) -> None:
         self.header = header
         self.partition = partition
         self.footer = footer

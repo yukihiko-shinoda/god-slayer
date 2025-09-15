@@ -1,5 +1,7 @@
 """Tests for row_pattern_matcher.py."""
 
+from __future__ import annotations
+
 import pytest
 
 from godslayer.list_string_matcher import ListStringMatcher
@@ -22,7 +24,7 @@ class TestListStringMatcher:
 
     @staticmethod
     @pytest.mark.parametrize(
-        "list_pattern, row, expected",
+        ("list_pattern", "row", "expected"),
         [
             (InstanceResource.HEADER_SF_CARD_VIEWER, InstanceResource.HEADER_SF_CARD_VIEWER, True),
             (
@@ -55,7 +57,7 @@ class TestListStringMatcher:
             ),
         ],
     )
-    def test_create_by_path_csv_input(list_pattern, row, expected):
+    def test_create_by_path_csv_input(list_pattern: list[str], row: list[str], *, expected: bool) -> None:
         """List of pattern should match row of same list with pattern.
 
         List of pattern should not match row which is different order. List of pattern should match row which match as
