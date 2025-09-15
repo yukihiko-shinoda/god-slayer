@@ -11,7 +11,7 @@ from godslayer.reader_operator_factory import *  # noqa: F403
 
 __author__ = """Yukihiko Shinoda"""
 __email__ = "yuk.hik.future@gmail.com"
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 __all__: list[str] = []
 # pylint: disable=undefined-variable
