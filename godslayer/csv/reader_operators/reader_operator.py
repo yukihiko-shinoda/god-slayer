@@ -1,21 +1,25 @@
 """Agrigate and state of reading CSV file."""
+
 from __future__ import annotations
 
-from typing import Generator, Iterator, List, Optional
+from typing import Generator
+from typing import Iterator
 
 
 class ReaderOperator:
     """Agrigate and state of reading CSV file."""
 
-    def __init__(self, *, before_task: Optional[ReaderOperator] = None):
+    def __init__(self, *, before_task: ReaderOperator | None = None) -> None:
         self.before_task = before_task
-        self._index: Optional[int] = None
+        self._index: int | None = None
 
-    def process(self, reader_input: Iterator[List[str]]) -> Generator[List[str], None, None]:
+    def process(self, reader_input: Iterator[list[str]]) -> Generator[list[str], None, None]:
         if self.before_task is None:
             return
         yield from self.before_task.process(reader_input)
 
     @property
     def index(self) -> int:
-        return (0 if self._index is None else self._index) + (0 if self.before_task is None else self.before_task.index)
+        return (0 if self._index is None else self._index) + (
+            0 if self.before_task is None else self.before_task.index
+        )
