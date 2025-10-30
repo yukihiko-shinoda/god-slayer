@@ -1,0 +1,7 @@
+services:
+  god-slayer:
+    build: .
+    image: futureys/god-slayer:latest
+    volumes:
+      - .:/workspace:cached
+      - /workspace/.venv

@@ -1,12 +1,12 @@
 # ⛩️God Slayer⚔️
 
 [![Test](https://github.com/yukihiko-shinoda/god-slayer/workflows/Test/badge.svg)](https://github.com/yukihiko-shinoda/god-slayer/actions?query=workflow%3ATest)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/2d37a5447afd27d46af1/test_coverage)](https://codeclimate.com/github/yukihiko-shinoda/god-slayer/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/2d37a5447afd27d46af1/maintainability)](https://codeclimate.com/github/yukihiko-shinoda/god-slayer/maintainability)
-[![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/yukihiko-shinoda/god-slayer)](https://codeclimate.com/github/yukihiko-shinoda/god-slayer)
-[![Updates](https://pyup.io/repos/github/yukihiko-shinoda/god-slayer/shield.svg)](https://pyup.io/repos/github/yukihiko-shinoda/god-slayer/)
+[![CodeQL](https://github.com/yukihiko-shinoda/god-slayer/workflows/CodeQL/badge.svg)](https://github.com/yukihiko-shinoda/god-slayer/actions?query=workflow%3ACodeQL)
+[![Code Coverage](https://qlty.sh/gh/yukihiko-shinoda/projects/god-slayer/coverage.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/god-slayer)
+[![Maintainability](https://qlty.sh/gh/yukihiko-shinoda/projects/god-slayer/maintainability.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/god-slayer)
+[![Dependabot](https://flat.badgen.net/github/dependabot/yukihiko-shinoda/god-slayer?icon=dependabot)](https://github.com/yukihiko-shinoda/god-slayer/security/dependabot)
 [![Python versions](https://img.shields.io/pypi/pyversions/godslayer.svg)](https://pypi.org/project/godslayer)
-[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fyukihiko-shinoda%2Fgod-slayer)](http://twitter.com/share?text=God%20Slayer&url=https://pypi.org/project/godslayer/&hashtags=python)
+[![X URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fyukihiko-shinoda%2Fgod-slayer)](https://x.com/intent/post?text=God%20Slayer&url=https%3A%2F%2Fpypi.org%2Fproject%2Fgodslayer%2F&hashtags=python)
 
 Provides generator to read Kami (god) CSV record as list of string.
 
