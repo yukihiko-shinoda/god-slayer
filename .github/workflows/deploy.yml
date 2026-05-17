@@ -7,6 +7,6 @@ permissions:
   packages: read  # Advanced Security suggested for Principle of Least Privilege in pull request review
 jobs:
   call-workflow:
-    uses: ./.github/workflows/reusable-deploy.yml
+    uses: yukihiko-shinoda/invoke-lint/.github/workflows/reusable-deploy.yml@main
     secrets:
       pypi_password: ${{ secrets.PYPI_PASSWORD }}
