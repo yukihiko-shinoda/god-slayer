@@ -94,4 +94,4 @@ The project maintains high code quality standards:
 - Uses pytest with resource path plugin
 - Slow tests marked with `@pytest.mark.slow`
 - Coverage reporting with exclusions for TYPE_CHECKING blocks and NotImplementedError
-- Test matrix covers Python 3.7-3.13
+- Test matrix covers Python 3.7-3.14
