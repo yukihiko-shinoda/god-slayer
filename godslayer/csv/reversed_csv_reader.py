@@ -1,5 +1,6 @@
-"""This module implements Reversed CSV Reader. The reversed file reader already exists in PyPI,
+"""This module implements Reversed CSV Reader.
 
+The reversed file reader already exists in PyPI,
 however, it doesn't support shift_jis_2004.
 @see https://pypi.org/project/file-read-backwards/
 """

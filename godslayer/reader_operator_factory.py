@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 from godslayer.csv.reader_operators.header_skipper import HeaderSkipper
 from godslayer.csv.reader_operators.partition_skip_record_before_footer_reader import (
-    PartitionSkipRecordBeforeFooterReader,  # noqa: H301,RUF100
+    PartitionSkipRecordBeforeFooterReader,  # noqa:H301
 )
 from godslayer.csv.reader_operators.partition_skip_record_reader import PartitionSkipRecordReader
 from godslayer.csv.reader_operators.record_before_footer_reader import RecordBeforeFooterReader
