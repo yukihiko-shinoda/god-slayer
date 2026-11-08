@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2020 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """Test library for check GodSlayer."""
 
 from __future__ import annotations

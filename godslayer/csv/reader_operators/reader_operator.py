@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2020 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """Agrigate and state of reading CSV file."""
 
 from __future__ import annotations

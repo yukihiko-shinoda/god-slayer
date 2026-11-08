@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2020 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """Last line detector."""
 
 from __future__ import annotations

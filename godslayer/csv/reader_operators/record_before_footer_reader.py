@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2020 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """ReaderOperator to read record before footer."""
 
 from __future__ import annotations

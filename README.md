@@ -1,7 +1,7 @@
 # ⛩️God Slayer⚔️
 
 [![Test](https://github.com/yukihiko-shinoda/god-slayer/workflows/Test/badge.svg)](https://github.com/yukihiko-shinoda/god-slayer/actions?query=workflow%3ATest)
-[![CodeQL](https://github.com/yukihiko-shinoda/god-slayer/workflows/CodeQL/badge.svg)](https://github.com/yukihiko-shinoda/god-slayer/actions?query=workflow%3ACodeQL)
+[![CodeQL](https://github.com/yukihiko-shinoda/god-slayer/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/yukihiko-shinoda/god-slayer/actions/workflows/github-code-scanning/codeql)
 [![Code Coverage](https://qlty.sh/gh/yukihiko-shinoda/projects/god-slayer/coverage.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/god-slayer)
 [![Maintainability](https://qlty.sh/gh/yukihiko-shinoda/projects/god-slayer/maintainability.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/god-slayer)
 [![Dependabot](https://flat.badgen.net/github/dependabot/yukihiko-shinoda/god-slayer?icon=dependabot)](https://github.com/yukihiko-shinoda/god-slayer/security/dependabot)

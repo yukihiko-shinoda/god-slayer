@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2020 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """This module implements Reversed CSV Reader.
 
 The reversed file reader already exists in PyPI,

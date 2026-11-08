@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2020 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """This module implements exceptions for this package."""
 
 __all__ = ["Error", "InvalidFooterError", "InvalidHeaderError", "InvalidRecordError", "LogicError"]
